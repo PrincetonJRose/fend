@@ -1,5 +1,39 @@
 // console.log('This page was loaded! Yay~ 😄')
 
+
+
+const navbarList = document.getElementById('navbar__list')
+// console.log(navbarList)
+
+const navbar = document.getElementsByClassName('navbar__menu')[0]
+// console.log(navbar)
+
+const sections = document.getElementsByTagName('section')
+// console.log(sections)
+
+
+
+
+let buildNavbar =()=> {
+    for ( let section of sections ) {
+        let li = document.createElement('li')
+
+        let span = document.createElement('span')
+        span.classList += 'menu__link'
+        span.innerText = section.dataset.nav
+        span.onclick = ()=> section.scrollIntoView({ behavior: "smooth" })
+
+        li.appendChild(span)
+        navbarList.appendChild(li)
+    };
+}
+
+
+
+buildNavbar()
+
+
+
 /**
  * 
  * Manipulating the DOM exercise.
@@ -24,14 +58,9 @@
  * Define Global Variables
  * Grabbing the main HTML elements I'll need for manipulation
 */
-const navbarList = document.getElementById('navbar__list')
-console.log(navbarList)
 
-const navbar = document.getElementsByClassName('navbar__menu')[0]
-console.log(navbar)
 
-const sections = document.getElementsByTagName('section')
-console.log(sections)
+
 /**
  * End Global Variables
  * Start Helper Functions
@@ -47,30 +76,12 @@ console.log(sections)
 */
 
 // build the nav
-let buildNavbar =()=> {
-    for ( let section of sections ) {
-        let li = document.createElement('li')
 
-        let span = document.createElement('span')
-        span.classList += 'menu__link'
-        span.innerText = section.dataset.nav
-        scrollToSection( span, section )
-
-        li.appendChild(span)
-        navbarList.appendChild(li)
-    };
-}
 
 // Add class 'active' to section when near top of viewport
 
 
 // Scroll to anchor ID using scrollTO event
-let scrollToSection =( span, section )=> span.onclick = (e)=> {
-    console.log( span, section )
-    section.scrollIntoView({
-        behavior: "smooth"
-    })
-}
 
 /**
  * End Main Functions
@@ -84,4 +95,4 @@ let scrollToSection =( span, section )=> span.onclick = (e)=> {
 
 // Set sections as active
 
-buildNavbar()
+
