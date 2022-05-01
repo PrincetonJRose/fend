@@ -21,13 +21,18 @@ let buildNavbar =()=> {
         let span = document.createElement('span')
         span.classList += 'menu__link'
         span.innerText = section.dataset.nav
-        span.onclick = ()=> section.scrollIntoView({ behavior: "smooth" })
 
         li.appendChild(span)
         navbarList.appendChild(li)
     };
 }
 
+navbarList.onclick = (event)=> {
+    if ( event.target.className.includes('menu__link') )
+        for ( let section of sections )
+            if ( section.dataset.nav === event.target.innerText )
+                section.scrollIntoView({ behavior: "smooth" })
+}
 
 
 buildNavbar()
@@ -56,9 +61,8 @@ buildNavbar()
 
 /**
  * Define Global Variables
- * Grabbing the main HTML elements I'll need for manipulation
+ * 
 */
-
 
 
 /**
@@ -66,7 +70,6 @@ buildNavbar()
  * Start Helper Functions
  * 
 */
-
 
 
 /**
