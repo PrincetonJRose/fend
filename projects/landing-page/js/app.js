@@ -1,3 +1,5 @@
+// console.log('This page was loaded! Yay~ 😄')
+
 /**
  * 
  * Manipulating the DOM exercise.
@@ -22,8 +24,11 @@
  * Define Global Variables
  * 
 */
+const navbarList = document.getElementById('navbar__list')
+console.log(navbarList)
 
-
+const sections = document.getElementsByTagName('section')
+console.log(sections)
 /**
  * End Global Variables
  * Start Helper Functions
@@ -39,7 +44,19 @@
 */
 
 // build the nav
+let buildNavbar =()=> {
+    for ( let section of sections ) {
+        let li = document.createElement('li')
 
+        let aTag = document.createElement('a')
+        aTag.classList += 'menu__link'
+        aTag.href = `#${section.id}`
+        aTag.innerText = section.dataset.nav
+
+        li.appendChild(aTag)
+        navbarList.appendChild(li)
+    };
+}
 
 // Add class 'active' to section when near top of viewport
 
@@ -59,4 +76,4 @@
 
 // Set sections as active
 
-
+buildNavbar()
