@@ -21,6 +21,7 @@ let buildNavbar =()=> {
         let span = document.createElement('span')
         span.classList += 'menu__link'
         span.innerText = section.dataset.nav
+        span.dataset.id = section.id
 
         li.appendChild(span)
         navbarList.appendChild(li)
@@ -29,9 +30,7 @@ let buildNavbar =()=> {
 
 navbarList.onclick = (event)=> {
     if ( event.target.className.includes('menu__link') )
-        for ( let section of sections )
-            if ( section.dataset.nav === event.target.innerText )
-                section.scrollIntoView({ behavior: "smooth" })
+        sections[`${event.target.dataset.id}`].scrollIntoView({ behavior: "smooth" })
 }
 
 
